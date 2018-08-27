@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using PacaTimer.Annotations;
 
 namespace PacaTimer
@@ -19,12 +20,19 @@ namespace PacaTimer
         private int _currentSecondaryLabelIndex = 0;
         private string _nextUpLabel;
         private string _activeSecondaryLabel;
+        private DispatcherTimer _timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 1)};
 
         public TimerViewModel(string name, List<TimerSegment> segments)
         {
             Name = name;
             Segments = segments;
             SetActiveSegment(0);
+            _timer.Tick += Timer_OnTick;
+        }
+
+        private void Timer_OnTick(object sender, object e)
+        {
+            ActiveSegment.Duration -= new TimeSpan(0, 0, 1);
         }
 
         public void SetActiveSegment(int index)
@@ -92,6 +100,27 @@ namespace PacaTimer
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void Play()
+        {
+            Debug.WriteLine("test");
+            //_timer.Start();
+        }
+
+        public void Pause()
+        {
+            _timer.Stop();
+        }
+
+        public void UpdateLabels(string primaryLabel, List<string> secondaryLabels)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChangeSegmentDuration(int index, TimeSpan time)
+        {
+            throw new NotImplementedException();
         }
     }
 }

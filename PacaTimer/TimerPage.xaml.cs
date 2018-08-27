@@ -45,9 +45,33 @@ namespace PacaTimer
             base.OnNavigatedTo(e);
         }
 
-        public async void Test(string helloWorld)
+        public async void Play()
         {
-            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ViewModel.Name = helloWorld);
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ViewModel.Play());
+        }
+
+        public async void Pause()
+        {
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ViewModel.Pause());
+        }
+
+        public async void UpdateLabels(string primaryLabel, List<string> secondaryLabels)
+        {
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ViewModel.UpdateLabels(primaryLabel, secondaryLabels));
+        }
+
+        /// <summary>
+        /// Doing this will reset the timer to that segment!
+        /// </summary>
+        /// <param name="index"></param>
+        public async void SetActiveSegment(int index)
+        {
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ViewModel.SetActiveSegment(index));
+        }
+        
+        public async void ChangeSegmentDuration(int index, TimeSpan time)
+        {
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ViewModel.ChangeSegmentDuration(index, time));
         }
     }
 }

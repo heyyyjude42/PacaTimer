@@ -40,6 +40,7 @@ namespace PacaTimer
         {
             var newView = CoreApplication.CreateNewView();
             var newViewId = 0;
+            TimerPage timer = null;
             await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 var frame = new Frame();
@@ -47,11 +48,10 @@ namespace PacaTimer
                 Window.Current.Content = frame;
                 Window.Current.Activate();
                 newViewId = ApplicationView.GetForCurrentView().Id;
-                _currTimer = (TimerPage) frame.Content;
+                timer = (TimerPage) frame.Content;
             });
             await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-
-            _currTimer.Test("Hello world!");
+            Frame.Navigate(typeof(RemotePage), timer);
         }
 
         private void xWriting_Clicked(object sender, RoutedEventArgs routedEventArgs)
