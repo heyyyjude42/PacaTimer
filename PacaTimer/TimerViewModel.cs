@@ -21,18 +21,18 @@ namespace PacaTimer
 
         public TimerViewModel(string name, List<TimerSegment> segments)
         {
-            _name = name;
-            _segments = segments;
+            Name = name;
+            Segments = segments;
             SetActiveSegment(0);
         }
 
         public void SetActiveSegment(int index)
         {
             _currentSegment = index;
-            _activeSegment = _segments[_currentSegment];
+            ActiveSegment = _segments[_currentSegment];
             _currentSecondaryLabelIndex = 0;
-            _activeSecondaryLabel = _activeSegment.SecondaryLabels[_currentSecondaryLabelIndex];
-            _nextUpLabel = _segments.Count - index != 1 ? "Next up: " + _segments[_currentSegment + 1].Label : "";
+            ActiveSecondaryLabel = _activeSegment.SecondaryLabels[_currentSecondaryLabelIndex];
+            NextUpLabel = _segments.Count - index != 1 ? "Next up: " + _segments[_currentSegment + 1].Label : "";
         }
 
         public List<TimerSegment> Segments
@@ -60,7 +60,7 @@ namespace PacaTimer
             get => _name;
             set
             {
-                _name = value;
+                _name = value.ToUpper();
                 OnPropertyChanged();
             }
         }
@@ -70,7 +70,7 @@ namespace PacaTimer
             get => _nextUpLabel;
             set
             {
-                _nextUpLabel = value;
+                _nextUpLabel = value.ToUpper();
                 OnPropertyChanged();
             }
         }

@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{StaticResource PageBackgroundColorBrush}">
 
     <Grid Padding="50">
         <Grid.RowDefinitions>
@@ -16,17 +16,17 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="0"  Stretch="Uniform" HorizontalAlignment="Center" MaxWidth="700">
-            <TextBlock Text="{Binding Name}" Typography.Capitals="AllSmallCaps" FontSize="60" Grid.Row="0" HorizontalAlignment="Center" TextAlignment="Center"/>
+            <TextBlock FontFamily="Whitney" Text="{Binding Name}" Typography.Capitals="SmallCaps" FontSize="60" Grid.Row="0" HorizontalAlignment="Center" TextAlignment="Center"/>
         </Viewbox>
         <Viewbox Grid.Row="1" Stretch="Uniform" HorizontalAlignment="Center" StretchDirection="Both" VerticalAlignment="Top">
-            <TextBlock x:Name="xCurrentSegmentTimer" Text="{Binding ActiveSegment.Duration, Mode=OneWay}" TextAlignment="Center"/>
+            <TextBlock x:Name="xCurrentSegmentTimer" Foreground="#600D13" FontWeight="Semibold" FontFamily="Whitney" Text="{Binding ActiveSegment.Duration, Mode=OneWay}" TextAlignment="Center"/>
         </Viewbox>
-        <Viewbox Grid.Row="2" Stretch="Uniform" HorizontalAlignment="Center" MaxWidth="400">
+        <Viewbox Grid.Row="2" Stretch="Uniform" HorizontalAlignment="Center" MaxWidth="350" Margin="0 20 0 0">
             <StackPanel>
-                <TextBlock Text="{Binding ActiveSegment.Label, Mode=OneWay}" HorizontalAlignment="Center" Foreground="Gray"/>
-                <TextBlock Text="{Binding ActiveSecondaryLabel, Mode=OneWay}" HorizontalAlignment="Center" Foreground="Gray"/>
+                <TextBlock Text="{Binding ActiveSegment.Label, Mode=OneWay}" HorizontalAlignment="Center" Opacity="0.6"/>
+                <TextBlock Text="{Binding ActiveSecondaryLabel, Mode=OneWay}" HorizontalAlignment="Center" Opacity="0.6"/>
                 <TextBlock Text=""/>
-                <TextBlock Text="{Binding NextUpLabel, Mode=OneWay}" Typography.Capitals="AllSmallCaps" HorizontalAlignment="Center" Foreground="Gray"/>
+                <TextBlock Text="{Binding NextUpLabel, Mode=OneWay}" Typography.Capitals="AllSmallCaps" HorizontalAlignment="Center" Opacity="0.6"/>
             </StackPanel>
         </Viewbox>
     </Grid>
