@@ -25,6 +25,8 @@ namespace PacaTimer
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private TimerPage _currTimer;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -45,11 +47,14 @@ namespace PacaTimer
                 Window.Current.Content = frame;
                 Window.Current.Activate();
                 newViewId = ApplicationView.GetForCurrentView().Id;
+                _currTimer = (TimerPage) frame.Content;
             });
             await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+
+            _currTimer.Test("Hello world!");
         }
 
-        private async void xWriting_Clicked(object sender, RoutedEventArgs routedEventArgs)
+        private void xWriting_Clicked(object sender, RoutedEventArgs routedEventArgs)
         {
             var prepSegment = new TimerSegment
             {
@@ -105,7 +110,7 @@ namespace PacaTimer
                     "Completely fill in all the bubbles.",
                     "You may fill in up to FIVE answers per question."
                 },
-                Duration = xOneDay.IsChecked == true ? new TimeSpan(0, 12, 0) : new TimeSpan(0, 15, 0)
+                Duration = xOneDay.IsChecked == true ? new TimeSpan(0, 45, 0) : xGlobal.IsChecked == true ? new TimeSpan(0, 75, 0) : new TimeSpan(0, 60, 0)
             };
 
             var timerViewModel = new TimerViewModel("Scholar's Challenge",

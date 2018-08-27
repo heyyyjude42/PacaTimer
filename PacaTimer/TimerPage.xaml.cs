@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -42,6 +43,11 @@ namespace PacaTimer
                 ViewModel = vm;
             }
             base.OnNavigatedTo(e);
+        }
+
+        public async void Test(string helloWorld)
+        {
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ViewModel.Name = helloWorld);
         }
     }
 }

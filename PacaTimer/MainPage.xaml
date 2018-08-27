@@ -13,6 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" FontSize="48" TextAlignment="Center">Select Timer</TextBlock>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="50">
@@ -20,6 +21,7 @@
             <Button Click="xChallenge_Clicked" HorizontalAlignment="Stretch" Margin="5" Padding="15 5">Scholar's Challenge</Button>
             <Button Click="xCustom_Clicked" HorizontalAlignment="Stretch" Margin="5" Padding="15 5">Custom Timer</Button>
         </StackPanel>
-        <CheckBox x:Name="xOneDay" IsChecked="false" Content="Use one-day timings" Grid.Row="2" HorizontalAlignment="Center"/>
+        <RadioButton x:Name="xOneDay" Content="Use one-day timings" Grid.Row="2" HorizontalAlignment="Center"/>
+        <RadioButton x:Name="xGlobal" Content="Use Global Round timings" Grid.Row="3" HorizontalAlignment="Center"/>
     </Grid>
 </Page>
